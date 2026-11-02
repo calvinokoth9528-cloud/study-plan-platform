@@ -44,7 +44,7 @@ export default async function EditPlanPage({ params }: { params: Promise<{ id: s
       <div className="mx-auto max-w-2xl">
         <div className="mb-6 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-text-primary">Edit plan</h1>
+            <h1 className="text-2xl font-bold text-[var(--text-primary)]">Edit plan</h1>
             <p className="mt-1 text-sm text-text-secondary">{plan.course.name}</p>
           </div>
           <Link href={"/plans/" + plan.id}><Button variant="secondary">Back to plan</Button></Link>

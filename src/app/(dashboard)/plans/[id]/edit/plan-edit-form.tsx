@@ -52,7 +52,7 @@ export function PlanEditForm({
           <Input type="number" min="1" max="168" value={capacity} onChange={(e) => setCapacity(parseFloat(e.target.value) || 1)} />
         </FieldGroup>
         <div>
-          <label className="mb-2 block text-sm font-medium text-text-primary">Unavailable days</label>
+          <label className="mb-2 block text-sm font-medium text-[var(--text-primary)]">Unavailable days</label>
           <MultiSelect options={weekdays} value={unavailable} onChange={setUnavailable} placeholder="Select days you can't study" />
         </div>
         <div className="flex gap-2">

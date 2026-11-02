@@ -154,12 +154,12 @@ export function TopicSection({ courseId, topics, initialOpen = false }: { course
         </p>
       )}
       {llmResult && (
-        <div className="rounded-lg border border-border bg-bg-secondary p-3">
+        <div className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] p-3">
           <p className="mb-2 text-xs text-text-muted">Suggested topics ({llmResult.topics.length})</p>
           <div className="flex flex-col gap-1.5">
             {llmResult.topics.map((t, i) => (
               <div key={i} className="flex items-center justify-between text-sm">
-                <span className="text-text-primary">{t.title}</span>
+                <span className="text-[var(--text-primary)]">{t.title}</span>
                 <Badge variant="muted">{t.estimatedHours}h</Badge>
               </div>
             ))}
@@ -225,7 +225,7 @@ export function TopicSection({ courseId, topics, initialOpen = false }: { course
                 <div key={t.id} className="flex items-center justify-between rounded-lg border border-border bg-bg-secondary px-3 py-2 text-sm">
                   <div className="flex min-w-0 items-center gap-2">
                     <span className="w-5 text-right text-text-muted">{i + 1}.</span>
-                    <span className="truncate text-text-primary">{t.title}</span>
+                    <span className="truncate text-[var(--text-primary)]">{t.title}</span>
                   </div>
                   <span className="flex-shrink-0 text-text-secondary">{t.estimatedHours}h</span>
                 </div>

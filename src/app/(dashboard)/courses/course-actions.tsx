@@ -43,7 +43,7 @@ export function CourseActions() {
       {open && (
         <Card className="mt-3 border-accent/30 shadow-md">
           <CardContent className="flex flex-col gap-4">
-            <h3 className="text-base font-semibold text-text-primary">Create a course</h3>
+            <h3 className="text-base font-semibold text-[var(--text-primary)]">Create a course</h3>
             <FieldGroup label="Course name">
               <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Bayesian Statistics" autoFocus />
             </FieldGroup>

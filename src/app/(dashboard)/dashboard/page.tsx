@@ -66,7 +66,7 @@ export default async function DashboardPage() {
       <div className="flex flex-col gap-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-text-primary">Dashboard</h1>
+            <h1 className="text-2xl font-bold text-[var(--text-primary)]">Dashboard</h1>
             <p className="mt-1 text-sm text-text-secondary">Welcome back, {user.name ?? user.email}.</p>
           </div>
           <Link href="/courses"><Button>New plan</Button></Link>

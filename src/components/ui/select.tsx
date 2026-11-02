@@ -22,7 +22,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <select
           id={inputId}
           className={cn(
-            "flex h-10 w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm text-text-primary focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors",
+            "flex h-10 w-full rounded-md border border-[var(--border-strong)] bg-[var(--bg-tertiary)] px-3 py-2.5 text-sm text-[var(--text-primary)] focus:border-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-glow)]",
             error && "border-danger focus:border-danger focus:ring-danger",
             className
           )}

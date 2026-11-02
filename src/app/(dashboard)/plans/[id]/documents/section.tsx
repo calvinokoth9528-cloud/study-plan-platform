@@ -85,7 +85,7 @@ export function DocumentsSection({
           <select
             value={topicId}
             onChange={(e) => setTopicId(e.target.value)}
-            className="rounded-lg border border-border bg-surface px-2 py-1.5 text-sm text-text-primary"
+            className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] px-2 py-1.5 text-sm text-[var(--text-primary)]"
             aria-label="Attach to topic (optional)"
           >
             <option value="">General (no topic)</option>
@@ -97,7 +97,7 @@ export function DocumentsSection({
             ref={inputRef}
             type="file"
             accept=".pdf,.png,.jpeg,.jpg,.webp,.gif,.svg,.txt,.md,.csv,.doc,.docx,.xlsx,.pptx"
-            className="max-w-xs flex-1 cursor-pointer rounded-lg border border-border bg-surface px-2 py-1.5 text-sm text-text-secondary file:mr-2 file:cursor-pointer file:rounded-md file:border-none file:bg-accent/10 file:px-2 file:py-1 file:text-sm file:text-accent"
+            className="max-w-xs flex-1 cursor-pointer rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] px-2 py-1.5 text-sm text-[var(--text-secondary)] file:mr-2 file:cursor-pointer file:rounded-md file:border-none file:bg-[var(--bg-tertiary)] file:px-2 file:py-1 file:text-[var(--text-primary)] file:hover:bg-[var(--bg-secondary)]"
           />
           <Button size="sm" onClick={upload} disabled={busy || pending}>
             {busy ? "Uploading…" : "Upload"}
@@ -114,7 +114,7 @@ export function DocumentsSection({
             {documents.map((d) => (
               <div
                 key={d.id}
-                className="flex items-center justify-between gap-3 rounded-lg border border-border bg-bg-secondary px-3 py-2"
+                className="flex items-center justify-between gap-3 rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] px-3 py-2"
               >
                 <div className="flex min-w-0 items-center gap-3">
                   <DocIcon mimeType={d.mimeType} />
@@ -123,7 +123,7 @@ export function DocumentsSection({
                       href={d.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block truncate text-sm font-medium text-text-primary hover:text-accent hover:underline"
+                      className="block truncate text-sm font-medium text-[var(--text-primary)] hover:text-[var(--accent)] hover:underline"
                     >
                       {d.name}
                     </a>

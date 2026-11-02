@@ -92,8 +92,8 @@ export function RepairSection({ planId }: { planId: string }) {
           </>
         ) : (
           <>
-            <div className="rounded-lg border border-border bg-bg-secondary p-3">
-              <p className="text-sm font-medium text-text-primary">{proposal.label}</p>
+            <div className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] p-3">
+              <p className="text-sm font-medium text-[var(--text-primary)]">{proposal.label}</p>
               <p className="mt-1 text-xs text-text-muted">{proposal.description}</p>
               <div className="mt-2 flex gap-4 text-xs text-text-secondary">
                 <span>
@@ -106,22 +106,22 @@ export function RepairSection({ planId }: { planId: string }) {
             </div>
 
             <div className="grid grid-cols-3 gap-3 text-sm">
-              <div className="rounded-lg border border-border bg-bg-secondary p-3">
+              <div className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] p-3">
                 <p className="mb-1 text-xs text-text-muted">Moved tasks</p>
-                <p className="text-lg font-semibold text-text-primary">{proposal.diff.movedTasks.length}</p>
+                <p className="text-lg font-semibold text-[var(--text-primary)]">{proposal.diff.movedTasks.length}</p>
               </div>
-              <div className="rounded-lg border border-border bg-bg-secondary p-3">
+              <div className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] p-3">
                 <p className="mb-1 text-xs text-text-muted">Added tasks</p>
-                <p className="text-lg font-semibold text-text-primary">{proposal.diff.addedTasks.length}</p>
+                <p className="text-lg font-semibold text-[var(--text-primary)]">{proposal.diff.addedTasks.length}</p>
               </div>
-              <div className="rounded-lg border border-border bg-bg-secondary p-3">
+              <div className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] p-3">
                 <p className="mb-1 text-xs text-text-muted">Protected tasks</p>
-                <p className="text-lg font-semibold text-text-primary">{proposal.diff.protectedTasks.length}</p>
+                <p className="text-lg font-semibold text-[var(--text-primary)]">{proposal.diff.protectedTasks.length}</p>
               </div>
             </div>
 
             {proposal.diff.movedTasks.length > 0 && (
-              <div className="rounded-lg border border-border bg-bg-secondary p-3">
+              <div className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] p-3">
                 <p className="mb-2 text-xs font-medium text-text-secondary">Task moves</p>
                 <div className="flex max-h-48 flex-col gap-1 overflow-auto text-xs">
                   {proposal.diff.movedTasks.map((m, i) => (

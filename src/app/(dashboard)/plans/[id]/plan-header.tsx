@@ -18,7 +18,7 @@ export function PlanHeader({
             <span className="h-4 w-4 flex-shrink-0 rounded-full" style={{ backgroundColor: courseColor }} />
             <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <h1 className="truncate text-xl font-bold text-text-primary">{planName}</h1>
+                <h1 className="truncate text-xl font-bold text-[var(--text-primary)]">{planName}</h1>
                 <Badge variant={planStatus === "active" ? "success" : "muted"}>{planStatus}</Badge>
               </div>
               <p className="text-sm text-text-muted">
@@ -43,22 +43,22 @@ export function PlanHeader({
         </div>
 
         <div className="mt-5 grid gap-4 sm:grid-cols-4">
-          <div className="rounded-lg border border-border bg-bg-secondary p-3">
+          <div className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] p-3">
             <div className="mb-1 text-xs text-text-muted">Completion</div>
             <div className="text-2xl font-semibold text-text-primary">{completionPct}%</div>
             <div className="text-xs text-text-muted">{doneCount} of {taskCount} tasks</div>
           </div>
-          <div className="rounded-lg border border-border bg-bg-secondary p-3">
+          <div className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] p-3">
             <div className="mb-1 text-xs text-text-muted">Scheduled hours</div>
             <div className="text-2xl font-semibold text-text-primary">{totalHours.toFixed(1)}h</div>
             <div className="text-xs text-text-muted">across all tasks</div>
           </div>
-          <div className="rounded-lg border border-border bg-bg-secondary p-3">
+          <div className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] p-3">
             <div className="mb-1 text-xs text-text-muted">Hours logged</div>
             <div className="text-2xl font-semibold text-text-primary">{doneHours.toFixed(1)}h</div>
             <div className="text-xs text-text-muted">actual study time</div>
           </div>
-          <div className="rounded-lg border border-border bg-bg-secondary p-3">
+          <div className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] p-3">
             <div className="mb-1 text-xs text-text-muted">Exports</div>
             <div className="text-xs text-text-secondary">ICS for calendar apps · CSV for spreadsheets</div>
           </div>

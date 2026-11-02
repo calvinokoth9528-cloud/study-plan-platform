@@ -24,11 +24,11 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-bg-secondary px-4 py-12">
+    <div className="flex min-h-screen items-center justify-center bg-[var(--bg-secondary)] px-4 py-12">
       <Card className="w-full max-w-md">
         <CardContent className="flex flex-col gap-6">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-text-primary">Welcome back</h1>
+            <h1 className="text-2xl font-bold text-[var(--text-primary)]">Welcome back</h1>
             <p className="mt-1 text-sm text-text-secondary">Sign in to continue planning.</p>
           </div>
 

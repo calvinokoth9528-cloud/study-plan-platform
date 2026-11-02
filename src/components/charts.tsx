@@ -21,7 +21,7 @@ export function DonutChart({ data, colors }: DonutChartProps) {
           ))}
         </Pie>
         <Tooltip
-          contentStyle={{ borderRadius: "8px", border: "1px solid var(--border)", background: "var(--bg-surface)", color: "var(--text-primary)", fontSize: "12px" }}
+          contentStyle={{ borderRadius: "8px", border: "1px solid var(--border-strong)", background: "var(--bg-tertiary)", color: "var(--text-primary)", fontSize: "12px" }}
         />
         <Legend
           verticalAlign="bottom"
@@ -42,11 +42,11 @@ export function BarChart({ data, color = "#6366f1" }: BarChartProps) {
   return (
     <ResponsiveContainer width="100%" height={220}>
       <ReBarChart data={data} margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+        <CartesianGrid strokeDasharray="3 3" stroke="var(--border-strong)" vertical={false} />
         <XAxis dataKey="label" tick={{ fill: "var(--text-muted)", fontSize: 11 }} />
         <YAxis tick={{ fill: "var(--text-muted)", fontSize: 11 }} width={44} />
         <Tooltip
-          contentStyle={{ borderRadius: "8px", border: "1px solid var(--border)", background: "var(--bg-surface)", color: "var(--text-primary)", fontSize: "12px" }}
+          contentStyle={{ borderRadius: "8px", border: "1px solid var(--border-strong)", background: "var(--bg-tertiary)", color: "var(--text-primary)", fontSize: "12px" }}
           formatter={(value) => [Number(value).toFixed(1) + "h", "Hours"]}
         />
         <Bar dataKey="hours" fill={color} radius={[4, 4, 0, 0]} />

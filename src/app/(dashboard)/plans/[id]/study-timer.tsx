@@ -132,7 +132,7 @@ export function StudyTimer({ tasks }: { tasks: TimerTask[] }) {
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
       {(!idle || open) && (
-        <div className="w-72 rounded-xl border border-border bg-surface p-4 shadow-lg">
+        <div className="w-72 rounded-xl border border-[var(--border-strong)] bg-[var(--bg-tertiary)] p-4 shadow-lg">
           <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-text-muted">
             Study timer
           </div>
@@ -143,7 +143,7 @@ export function StudyTimer({ tasks }: { tasks: TimerTask[] }) {
             </div>
           )}
 
-          <div className="mb-3 text-center text-3xl font-semibold tabular-nums text-text-primary">
+          <div className="mb-3 text-center text-3xl font-bold tracking-wide text-[var(--text-primary)] tabular-nums">
             {fmt(elapsed)}
           </div>
 
@@ -167,7 +167,7 @@ export function StudyTimer({ tasks }: { tasks: TimerTask[] }) {
                 <select
                   onChange={(e) => start(e.target.value)}
                   value=""
-                  className="w-full cursor-pointer rounded-lg border border-border bg-bg-secondary px-2 py-1.5 text-sm text-text-primary"
+                  className="w-full cursor-pointer rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] px-2 py-1.5 text-sm text-[var(--text-primary)]"
                   aria-label="Pick a task to start"
                 >
                   <option value="" disabled>
@@ -190,7 +190,7 @@ export function StudyTimer({ tasks }: { tasks: TimerTask[] }) {
                 const target = tasks.find((t) => t.id === e.target.value);
                 if (target) start(target.id);
               }}
-              className="mt-2 w-full cursor-pointer rounded-lg border border-border bg-bg-secondary px-2 py-1 text-xs text-text-secondary"
+              className="mt-2 w-full cursor-pointer rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] px-2 py-1 text-xs text-[var(--text-secondary)]"
               aria-label="Switch task"
             >
               {openTasks.map((t) => (

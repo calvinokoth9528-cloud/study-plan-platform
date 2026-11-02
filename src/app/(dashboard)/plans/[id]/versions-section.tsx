@@ -36,10 +36,10 @@ export function VersionsSection({ planId, versions }: { planId: string; versions
           Major adjustments (repairs, restores) snapshot the plan first so you can always go back.
         </p>
         {versions.map((v) => (
-          <div key={v.id} className="flex items-center justify-between rounded-lg border border-border bg-bg-secondary px-3 py-2 text-sm">
+          <div key={v.id} className="flex items-center justify-between rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] px-3 py-2 text-sm">
             <div className="flex min-w-0 items-center gap-2">
               <Badge variant="muted">{new Date(v.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</Badge>
-              <span className="truncate text-text-primary">{v.label}</span>
+              <span className="truncate text-[var(--text-primary)]">{v.label}</span>
             </div>
             <Button size="sm" variant="secondary" isLoading={restoring === v.id} onClick={() => restore(v.id)}>
               Restore

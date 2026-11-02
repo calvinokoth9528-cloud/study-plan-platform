@@ -25,7 +25,7 @@ export default async function CoursesPage() {
       <div className="flex flex-col gap-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-text-primary">Courses</h1>
+            <h1 className="text-2xl font-bold text-[var(--text-primary)]">Courses</h1>
             <p className="mt-1 text-sm text-text-secondary">Courses hold your topics and drive plan generation.</p>
           </div>
           <CourseActions />
@@ -47,7 +47,7 @@ export default async function CoursesPage() {
                         <div className="flex min-w-0 items-center gap-3">
                           <span className="h-3 w-3 flex-shrink-0 rounded-full" style={{ backgroundColor: c.color }} />
                           <div className="min-w-0">
-                            <div className="truncate font-medium text-text-primary">{c.name}</div>
+                            <div className="truncate font-medium text-[var(--text-primary)]">{c.name}</div>
                             <div className="text-xs text-text-muted">
                               {c._count.topics} topic{c._count.topics === 1 ? "" : "s"} ·{" "}
                               {c.topics.reduce((t, tp) => t + tp.estimatedHours, 0).toFixed(1)}h est.

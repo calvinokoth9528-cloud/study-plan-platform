@@ -31,7 +31,7 @@ export default async function PlansPage() {
     <>
       <div className="flex flex-col gap-6">
         <div>
-          <h1 className="text-2xl font-bold text-text-primary">Plans</h1>
+          <h1 className="text-2xl font-bold text-[var(--text-primary)]">Plans</h1>
           <p className="mt-1 text-sm text-text-secondary">
             Each course can have one active plan. Older plans are archived automatically.
           </p>
@@ -62,7 +62,7 @@ export default async function PlansPage() {
                           <div className="flex min-w-0 items-center gap-3">
                             <span className="h-3 w-3 flex-shrink-0 rounded-full" style={{ backgroundColor: p.course.color }} />
                             <div className="min-w-0">
-                              <div className="truncate font-medium text-text-primary">{p.name}</div>
+                              <div className="truncate font-medium text-[var(--text-primary)]">{p.name}</div>
                               <div className="text-xs text-text-muted">
                                 {p.course.name} · {p._count.tasks} tasks · generated {formatDate(p.generatedAt)}
                               </div>
@@ -90,7 +90,7 @@ export default async function PlansPage() {
                 <CardHeader><CardTitle>Archived</CardTitle></CardHeader>
                 <CardContent className="flex flex-col gap-2">
                   {archivedPlans.map((p) => (
-                    <Link key={p.id} href={"/plans/" + p.id} className="flex items-center justify-between rounded-lg border border-border bg-bg-secondary px-3 py-2 text-sm transition-colors hover:bg-bg-tertiary">
+                    <Link key={p.id} href={"/plans/" + p.id} className="flex items-center justify-between rounded-lg border border-[var(--border)] bg-[var(--bg-tertiary)] px-3 py-2 text-sm transition-all hover:bg-[var(--bg-secondary)] hover:border-[var(--border-strong)] hover:shadow-sm">
                       <div className="flex min-w-0 items-center gap-2">
                         <span className="h-2.5 w-2.5 flex-shrink-0 rounded-full" style={{ backgroundColor: p.course.color }} />
                         <span className="truncate text-text-primary">{p.name}</span>

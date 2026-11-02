@@ -2,16 +2,16 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors",
+  "inline-flex items-center rounded-sm border px-2.5 py-0.5 text-xs font-bold tracking-wide transition-all duration-120",
   {
     variants: {
       variant: {
-        default: "border-transparent bg-accent/10 text-accent",
-        success: "border-transparent bg-success/10 text-success",
-        warning: "border-transparent bg-warning/10 text-warning",
-        danger: "border-transparent bg-danger/10 text-danger",
-        muted: "border-transparent bg-bg-tertiary text-text-secondary",
-        outline: "border border-border text-text-secondary bg-transparent",
+        default: "border-[var(--accent)] bg-[var(--accent-glow)] text-[var(--bg-primary)]",
+        success: "border-[var(--success)] bg-[var(--success-glow)] text-[var(--bg-primary)]",
+        warning: "border-[var(--warning)] bg-[var(--warning-glow)] text-[var(--bg-primary)]",
+        danger: "border-[var(--danger)] bg-[var(--danger-glow)] text-[var(--bg-primary)]",
+        muted: "border-[var(--border-strong)] bg-[var(--bg-secondary)] text-[var(--text-muted)]",
+        outline: "border-[var(--border-strong)] bg-transparent text-[var(--text-secondary)]",
       },
     },
     defaultVariants: { variant: "default" },

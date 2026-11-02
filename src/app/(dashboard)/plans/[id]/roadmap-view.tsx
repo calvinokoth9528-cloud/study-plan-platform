@@ -35,7 +35,7 @@ export function RoadmapView({ tasks, topicTitles, courseColor }: { tasks: Task[]
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Roadmap</CardTitle>
         <div className="text-right">
-          <div className="text-sm font-medium text-text-primary">{completionPct}% complete</div>
+          <div className="text-sm font-medium text-[var(--text-primary)]">{completionPct}% complete</div>
           <div className="text-xs text-text-muted">{totalDone}/{tasks.length} tasks</div>
         </div>
       </CardHeader>
@@ -51,11 +51,11 @@ export function RoadmapView({ tasks, topicTitles, courseColor }: { tasks: Task[]
             {topics.map(([topicId, t]) => {
               const pct = t.count > 0 ? Math.round((t.doneCount / t.count) * 100) : 0;
               return (
-                <div key={topicId} className="rounded-lg border border-border bg-bg-secondary px-3 py-2">
+                <div key={topicId} className="rounded-lg border border-[var(--border-strong)] bg-[var(--bg-tertiary)] px-3 py-2">
                   <div className="mb-1 flex items-center justify-between">
                     <div className="flex min-w-0 items-center gap-2">
                       <span className="h-2 w-2 flex-shrink-0 rounded-full" style={{ backgroundColor: courseColor }} />
-                      <span className="truncate text-sm font-medium text-text-primary">{t.title}</span>
+                      <span className="truncate text-sm font-medium text-[var(--text-primary)]">{t.title}</span>
                     </div>
                     <div className="ml-2 flex-shrink-0 text-xs text-text-muted">
                       {t.doneCount}/{t.count} · {t.scheduled.toFixed(1)}h planned{t.actual > 0 ? " · " + t.actual.toFixed(1) + "h logged" : ""}

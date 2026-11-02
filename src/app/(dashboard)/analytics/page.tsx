@@ -68,7 +68,7 @@ export default async function AnalyticsPage() {
       <div className="flex flex-col gap-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-text-primary">Analytics</h1>
+            <h1 className="text-2xl font-bold text-[var(--text-primary)]">Analytics</h1>
             <p className="mt-1 text-sm text-text-secondary">Track your study time, completion, and focus topics.</p>
           </div>
           <Link href="/courses"><Button variant="secondary" size="sm">Manage courses</Button></Link>

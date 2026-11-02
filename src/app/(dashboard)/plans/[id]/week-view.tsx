@@ -85,7 +85,7 @@ export function WeekView({ tasks, courseColor, unavailableDays }: { tasks: Task[
         <Button variant="ghost" size="sm" onClick={() => moveWeek(-1)} aria-label="Previous week">
           <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" /></svg>
         </Button>
-        <span className="min-w-[140px] text-center text-sm font-medium text-text-primary">
+        <span className="min-w-[140px] text-center text-sm font-medium text-[var(--text-primary)]">
           {formatDate(weekStart, { month: "short", day: "numeric" })} — {formatDate(addDays(weekStart, 6), { month: "short", day: "numeric" })}
         </span>
         <Button variant="ghost" size="sm" onClick={() => moveWeek(1)} aria-label="Next week">
@@ -107,12 +107,12 @@ export function WeekView({ tasks, courseColor, unavailableDays }: { tasks: Task[
               key={key}
               className={cn(
                 "flex min-h-[150px] flex-col rounded-xl border p-2",
-                isToday ? "border-accent/50 ring-1 ring-accent/30" : "border-border bg-surface",
+                isToday ? "border-accent/50 ring-1 ring-accent/30" : "border-[var(--border)] bg-[var(--bg-tertiary)]",
                 isUnavail && "bg-bg-tertiary/50"
               )}
             >
               <div className="mb-2 flex items-center justify-between">
-                <span className={cn("text-xs font-semibold", isToday ? "text-accent" : "text-text-primary")}>{day.getDate()}</span>
+                <span className={cn("text-xs font-semibold", isToday ? "text-[var(--accent)]" : "text-[var(--text-primary)]")}>{day.getDate()}</span>
                 <span className="text-[10px] text-text-muted">{weekdayName(day).slice(0, 3)}</span>
               </div>
               {dayTasks.length === 0 ? (
@@ -143,7 +143,7 @@ function TaskBlock({ task, courseColor, onStatusChange }: { task: Task; courseCo
     partial: "bg-warning/10 text-warning",
   };
   return (
-    <div className={cn("flex items-center justify-between gap-1 rounded-lg border border-border px-1.5 py-1 text-[10px]", statusColors[task.status] ?? statusColors.pending, task.locked && "opacity-60")}>
+    <div className={cn("flex items-center justify-between gap-1 rounded-lg border border-[var(--border-strong)] px-1.5 py-1 text-[10px]", statusColors[task.status] ?? statusColors.pending, task.locked && "opacity-60")}>
       <span className="flex min-w-0 items-center gap-1 truncate">
         <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full" style={{ backgroundColor: courseColor }} />
         {task.isReview ? "Review" : "Study"} · {task.scheduledHours}h

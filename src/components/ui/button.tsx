@@ -4,21 +4,22 @@ import { forwardRef, ButtonHTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
+// Stark blocky buttons — heavy borders, thick chrome, glowing accents
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-surface px-4 py-2 text-sm font-medium text-text-primary transition-all disabled:opacity-50 disabled:pointer-events-none",
+  "inline-flex items-center justify-center gap-2 rounded-md border border-[var(--border-strong)] bg-[var(--bg-primary)] px-4 py-2.5 text-sm font-bold tracking-wide text-[var(--text-primary)] transition-all duration-120 active:translate-y-[2px] disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
       variant: {
-        default: "bg-accent text-white border-accent hover:bg-accent-strong",
-        secondary: "bg-bg-secondary border-border hover:bg-bg-tertiary",
-        ghost: "bg-transparent border-transparent hover:bg-bg-tertiary",
-        danger: "bg-danger text-white border-danger hover:bg-red-600",
-        link: "bg-transparent border-transparent text-accent hover:underline",
+        default: "border-[var(--accent)] bg-[linear-gradient(135deg,var(--accent)_0%,var(--accent-strong)_60%,var(--accent-strong)_100%)] text-[var(--bg-primary)] shadow-lg shadow-[var(--accent-glow)] hover:brightness-[1.12] active:shadow-[inset_0_2px_4px_rgba(0,0,0,.35)]",
+        secondary: "border-[var(--border-strong)] bg-[linear-gradient(135deg,var(--bg-tertiary)_0%,var(--bg-secondary)_100%)] text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)] hover:brightness-[1.08] active:shadow-[inset_0_1px_3px_rgba(0,0,0,.25)]",
+        ghost: "border-[var(--border-strong)] bg-transparent text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)] hover:text-[var(--text-primary)]",
+        danger: "border-[var(--danger)] bg-[linear-gradient(135deg,var(--danger)_0%,#b71c1c_60%,#b71c1c_100%)] text-[var(--bg-primary)] shadow-lg shadow-[var(--danger-glow)] hover:brightness-[1.12] active:shadow-[inset_0_2px_4px_rgba(0,0,0,.35)]",
+        link: "border-[var(--border-strong)] bg-transparent text-[var(--accent)] hover:text-[var(--accent-strong)] hover:border-[var(--accent)] hover:bg-[var(--accent-glow)]",
       },
       size: {
-        sm: "h-8 px-3 text-xs",
+        sm: "h-9 px-3 text-xs",
         md: "h-10 px-4",
-        lg: "h-12 px-6 text-base",
+        lg: "h-12 px-7 text-base",
       },
     },
     defaultVariants: { variant: "default", size: "md" },

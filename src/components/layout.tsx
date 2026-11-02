@@ -35,16 +35,16 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
   const user = session?.user as { name?: string; email?: string } | null;
 
   return (
-    <div className="min-h-screen bg-bg-secondary">
-      <nav className="sticky top-0 z-40 border-b border-border bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/70">
+    <div className="min-h-screen bg-[var(--bg-secondary)]">
+      <nav className="sticky top-0 z-40 border-b border-[var(--border-strong)] bg-[var(--bg-primary)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--bg-primary)]/70">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <svg className="h-7 w-7 text-accent" viewBox="0 0 32 32" fill="currentColor">
+            <svg className="h-7 w-7 text-[var(--accent)]" viewBox="0 0 32 32" fill="currentColor">
               <rect width="32" height="32" rx="8" fill="currentColor" />
               <path d="M8 8h6l-6 12 6 4-6 12H8" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
               <path d="M24 8h-6l6 12-6 4 6 12" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.85" />
             </svg>
-            <span className="text-lg font-semibold text-text-primary">Study Plan</span>
+            <span className="text-lg font-bold tracking-wide text-[var(--text-primary)]">Study Plan</span>
           </Link>
 
           <div className="hidden items-center gap-6 md:flex">
@@ -53,7 +53,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-accent",
+                  "relative text-sm font-bold transition-colors after:absolute after:bottom-[-3px] after:left-0 afterright-0 after:h-[2px] after:rounded-md after:bg-[var(--accent)] after:opacity-0 hover:text-[var(--accent)] after:transition-opacity",
                   pathname.startsWith(link.href) ? "text-accent" : "text-text-secondary"
                 )}
               >
@@ -62,11 +62,11 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <ThemeToggle />
             {session ? (
               <>
-                <Link href="/profile" className="hidden text-sm text-text-secondary hover:text-text-primary sm:block">
+                <Link href="/profile" className="hidden text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors sm:block">
                   {user?.name ?? user?.email}
                 </Link>
                 <Button variant="ghost" size="sm" onClick={() => signOut({ callbackUrl: "/login" })}>
@@ -97,7 +97,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
         </div>
 
         {menuOpen && (
-          <div ref={menuRef} className="border-t border-border bg-surface md:hidden">
+          <div ref={menuRef} className="border-t border-[var(--border)] bg-[var(--bg-primary)] md:hidden">
             <div className="flex flex-col gap-1 px-4 py-3">
               {navLinks.map((link) => (
                 <Link
@@ -105,15 +105,15 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className={cn(
-                    "rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                    pathname.startsWith(link.href) ? "bg-accent/10 text-accent" : "text-text-secondary hover:bg-bg-tertiary"
+                    "rounded-md px-3 py-2 text-sm font-bold transition-colors",
+                    pathname.startsWith(link.href) ? "bg-[var(--accent-glow)] text-[var(--accent)]" : "text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]"
                   )}
                 >
                   {link.label}
                 </Link>
               ))}
               {!session && (
-              <div className="mt-2 flex flex-col gap-2 border-t border-border pt-3">
+              <div className="mt-2 flex flex-col gap-2 border-t border-[var(--border)] pt-3">
                 <ThemeToggle className="self-start" />
                 <Link href="/login" className="w-full">
                     <Button variant="secondary" className="w-full">Sign in</Button>

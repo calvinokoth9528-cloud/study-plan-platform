@@ -28,7 +28,7 @@ export default async function PlanPage({ params }: { params: Promise<{ id: strin
     return (
       <>
         <div className="py-16 text-center">
-          <h1 className="text-xl font-semibold text-text-primary">Plan not found</h1>
+          <h1 className="text-xl font-semibold text-[var(--text-primary)]">Plan not found</h1>
         </div>
       </>
     );
