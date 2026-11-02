@@ -1,0 +1,161 @@
+// https://www.prisma.io/docs/concepts/database-connectors
+// Dev: DATABASE_URL="file:./dev.db"  (SQLite)
+// Prod (Vercel/Neon): DATABASE_URL="postgresql://... (Postgres)"
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+
+  courses  Course[]
+  plans    Plan[]
+  sessions Session[]
+  notes    Note[]
+  reminderLogs ReminderLog[]
+  documents Document[]
+}
+
+model ReminderLog {
+  id        String   @id @default(cuid())
+  userId    String
+  day       String
+  taskCount Int      @default(0)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, day])
+}
+
+model Course {
+  id        String   @id @default(cuid())
+  userId    String
+  name      String
+  color     String   @default("#6366f1")
+  examDate  DateTime?
+  createdAt DateTime @default(now())
+
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topics Topic[]
+  plans  Plan[]
+}
+
+model Topic {
+  id             String  @id @default(cuid())
+  courseId       String
+  title          String
+  color          String  @default("#6366f1")
+  examDate       DateTime?
+  difficulty     Int     @default(2)
+  synopsis       String?
+  estimatedHours Float   @default(1)
+  sortOrder      Int     @default(0)
+  notes          String?
+  fsrsState      String?
+
+  course   Course     @relation(fields: [courseId], references: [id])
+  tasks    PlanTask[]
+  documents Document[]
+}
+
+model Document {
+  id         String   @id @default(cuid())
+  userId     String
+  courseId   String
+  topicId    String?
+  name       String
+  mimeType   String
+  size       Int
+  storageKey String
+  url        String?
+  createdAt  DateTime @default(now())
+
+  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic Topic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+}
+
+model Plan {
+  id                  String   @id @default(cuid())
+  userId              String
+  courseId            String
+  name                String
+  status              String   @default("active")
+  generatedAt         DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  weeklyCapacityHours Int
+  unavailableDays     String   @default("[]")
+
+  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course   Course        @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  tasks    PlanTask[]
+  versions PlanVersion[]
+  Session  Session[]
+  Note     Note[]
+}
+
+model PlanTask {
+  id             String    @id @default(cuid())
+  planId         String
+  topicId        String
+  scheduledDate  DateTime
+  scheduledHours Float     @default(1)
+  status         String    @default("pending")
+  actualHours    Float?
+  confidence     Int?
+  isReview       Boolean   @default(false)
+  reviewDueDate  DateTime?
+  locked         Boolean   @default(false)
+  sortOrder      Int       @default(0)
+
+  plan    Plan      @relation(fields: [planId], references: [id], onDelete: Cascade)
+  topic   Topic     @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  Session Session[]
+}
+
+model Session {
+  id          String    @id @default(cuid())
+  userId      String
+  planTaskId  String
+  planId      String
+  startedAt   DateTime  @default(now())
+  endedAt     DateTime?
+  actualHours Float?
+  confidence  Int?
+  note        String?
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan    Plan     @relation(fields: [planId], references: [id], onDelete: Cascade)
+  task    PlanTask @relation(fields: [planTaskId], references: [id], onDelete: Cascade)
+}
+
+model PlanVersion {
+  id        String   @id @default(cuid())
+  planId    String
+  label     String
+  snapshot  String // JSON snapshot of plan tasks
+  createdAt DateTime @default(now())
+
+  plan Plan @relation(fields: [planId], references: [id], onDelete: Cascade)
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  planId    String
+  userId    String
+  text      String
+  createdAt DateTime @default(now())
+
+  plan Plan @relation(fields: [planId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

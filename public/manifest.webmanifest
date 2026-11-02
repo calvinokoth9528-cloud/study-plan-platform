@@ -1,0 +1,14 @@
+{
+  "name": "Study Plan Platform",
+  "short_name": "Study Plan",
+  "description": "Plan, track, and repair your study schedule",
+  "id": "/dashboard",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#6366f1",
+  "icons": [
+    { "src": "/app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

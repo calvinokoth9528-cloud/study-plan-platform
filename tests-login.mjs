@@ -1,0 +1,14 @@
+import { chromium } from "@playwright/test";
+const BASE = "http://localhost:3000";
+const b = await chromium.launch({ headless: true, args: ["--no-sandbox", "--disable-dev-shm-usage"] });
+const ctx = await b.newContext({ baseURL: BASE, viewport: { width: 1280, height: 900 } });
+const p = await ctx.newPage();
+await p.goto(`${BASE}/login`);
+await p.waitForLoadState("domcontentloaded");
+const html = await p.content();
+const formIdx = html.indexOf("<form");
+const iframeStart = html.indexOf("<iframe");
+console.log("HAS_FORM_TAG:", formIdx > 0);
+console.log("HAS_IFRAME:", iframeStart > 0);
+console.log("SNIPPET_FORM:", html.substring(Math.max(0, formIdx > 0 ? formIdx - 200 : 0), (formIdx > 0 ? formIdx : html.length) + 500).replace(/\s+/g, " "));
+await b.close();

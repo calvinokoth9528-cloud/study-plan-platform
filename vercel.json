@@ -1,0 +1,7 @@
+{
+  "buildCommand": "prisma generate --schema prisma/schema.prisma.prod && next build",
+  "framework": "nextjs",
+  "crons": [
+    { "path": "/api/reminders/send", "schedule": "0 8 * * *" }
+  ]
+}
